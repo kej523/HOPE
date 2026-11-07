@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WRI ARCHIVE — 공개 아카이브</title>
+<style>
+:root{--blue:#0275d8;--link:#0645ad;--border:#a7d7f9;--line:#ddd;--bg:#f8f9fa;--panel:#fff;--text:#202122;--muted:#72777d;--soft:#eaecf0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.65 Arial,"Noto Sans KR",sans-serif}
+a{color:var(--link);text-decoration:none;cursor:pointer}a:hover{text-decoration:underline}
+header{background:#fff;border-bottom:1px solid var(--line);padding:12px max(18px,calc((100% - 1240px)/2));display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:5}
+.logo{font-family:Georgia,serif;font-size:21px;font-weight:bold;letter-spacing:1px;color:#202122;white-space:nowrap}.logo span{color:var(--blue)}
+.search{display:flex;flex:1;max-width:560px}.search input{width:100%;padding:9px 12px;border:1px solid #a2a9b1;border-radius:3px 0 0 3px;font-size:14px}.search button,.btn{border:1px solid #a2a9b1;background:#f8f9fa;padding:8px 13px;cursor:pointer;border-radius:3px}.search button{border-radius:0 3px 3px 0}
+.toplinks{margin-left:auto;display:flex;gap:13px;white-space:nowrap;font-size:13px}
+.layout{max-width:1240px;margin:22px auto;padding:0 18px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px}
+aside{font-size:13px} .sidebox{background:#fff;border:1px solid var(--line);padding:12px;margin-bottom:12px}.sidebox h3{font-size:13px;margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}.sidebox a{display:block;padding:3px 0}
+main{background:#fff;border:1px solid var(--line);min-height:75vh;padding:24px 30px}
+h1{font-size:28px;font-weight:400;border-bottom:1px solid var(--line);padding-bottom:8px;margin:0 0 5px}
+.subtitle{color:var(--muted);font-size:12px;margin-bottom:18px}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin:12px 0 20px;flex-wrap:wrap}.tabs button{background:#fff;border:0;border-bottom:2px solid transparent;padding:9px 13px;cursor:pointer;color:var(--link)}.tabs button.active{border-bottom-color:var(--blue);color:var(--text);font-weight:bold}
+.notice{background:#f8f9fa;border:1px solid var(--line);padding:10px 13px;margin:12px 0}.infobox{float:right;width:min(280px,42%);border:1px solid #a2a9b1;background:#f8f9fa;margin:0 0 16px 20px;padding:10px;font-size:13px}.infobox h3{text-align:center;margin:0 0 8px;background:#eaecf0;padding:5px}.infobox table{width:100%;border-collapse:collapse}.infobox td{padding:4px;border-top:1px solid #ddd;vertical-align:top}.infobox td:first-child{font-weight:bold;width:34%}
+.toc{border:1px solid var(--line);background:#fafafa;display:table;min-width:240px;max-width:100%;padding:10px 18px;margin:14px 0 20px}.toc-title{text-align:center;font-weight:bold;margin-bottom:5px}.toc ol{margin:0;padding-left:23px}.toc li{padding:1px 0}
+h2{font-size:21px;font-weight:400;border-bottom:1px solid var(--line);margin:26px 0 10px;padding-bottom:4px}h3{font-size:17px;margin:20px 0 8px}
+p{margin:8px 0}.ref{font-size:11px;vertical-align:super}.ref a{color:var(--link)}
+.footnotes{border-top:1px solid var(--line);margin-top:26px;padding-top:8px;font-size:13px}.footnotes ol{padding-left:24px}.muted{color:var(--muted)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.btn.primary{background:#36c;border-color:#36c;color:#fff}.btn.danger{color:#b32424}
+.editor textarea{width:100%;min-height:420px;padding:12px;border:1px solid #a2a9b1;font:14px/1.6 ui-monospace,monospace}.editor input,.editor select,.formline input{padding:8px;border:1px solid #a2a9b1;width:100%;margin:5px 0 12px}.editor label{font-weight:bold}.formline{max-width:650px}
+.listtable{width:100%;border-collapse:collapse}.listtable th,.listtable td{border:1px solid var(--line);padding:8px;text-align:left}.listtable th{background:#eaecf0}
+.tag{display:inline-block;background:#eaecf0;border-radius:2px;padding:1px 6px;font-size:11px;margin:2px}
+footer{max-width:1240px;margin:0 auto;padding:0 18px 30px;color:var(--muted);font-size:12px}
+.mobilemenu{display:none}
+@media(max-width:800px){header{flex-wrap:wrap;position:static}.toplinks{margin-left:0}.layout{grid-template-columns:1fr;margin-top:10px}aside{display:none}main{padding:18px}.infobox{float:none;width:100%;margin:12px 0}.mobilemenu{display:inline-block}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#" onclick="goHome();return false">WRI <span>ARCHIVE</span></a>
+  <form class="search" onsubmit="searchDoc(event)"><input id="searchInput" placeholder="문서 검색" autocomplete="off"><button>검색</button></form>
+  <nav class="toplinks"><a href="#" onclick="showSpecial('recent');return false">최근 변경</a><a href="#" onclick="showSpecial('all');return false">모든 문서</a></nav>
+</header>
+<div class="layout">
+<aside>
+ <div class="sidebox"><h3>WRI ARCHIVE</h3><a href="#" onclick="goHome();return false">대문</a><a href="#" onclick="showSpecial('all');return false">전체 문서</a><a href="#" onclick="showSpecial('recent');return false">최근 변경</a><a href="#" onclick="showSpecial('categories');return false">분류 목록</a></div>
+ <div class="sidebox"><h3>세계관</h3><a onclick="openDoc('WRI')">WRI</a><a onclick="openDoc('웜홀 기술')">웜홀 기술</a><a onclick="openDoc('하말리우스')">하말리우스</a><a onclick="openDoc('위상 물질')">위상 물질</a></div>
+ <div class="sidebox"><h3>주요 사건</h3><a onclick="openDoc('퍼스트 컨택트 프로젝트')">퍼스트 컨택트 프로젝트</a><a onclick="openDoc('대파멸')">대파멸</a><a onclick="openDoc('대공')">대공</a><a onclick="openDoc('대공 폐쇄 작전')">대공 폐쇄 작전</a></div>
+ <div class="sidebox"><h3>인물</h3><a onclick="openDoc('유성원')">유성원</a><a onclick="openDoc('최하라')">최하라</a><a onclick="openDoc('백영')">백영</a></div>
+</aside>
+<main id="app"></main>
+</div>
+<footer>이 사이트는 개인 창작 세계관을 소개하는 공개 열람용 아카이브입니다. 방문자는 문서를 수정할 수 없습니다. 실제 나무위키 또는 WRI와 무관합니다.</footer>
+<script>
+const seed = [
+{title:"WRI",cat:"세계관",date:"2026-11-07",body:`WRI(World Research Institute)는 웜홀 연구를 수행하는 국제 연구 기관이다. 국제 본부와 각국 지부로 구성되어 있으며, 대한민국 지부는 WRI 한국 본부로 불린다.\n\n## 1. 조직\nWRI는 웜홀의 생성과 안정화, 장거리 이동 기술 및 외계 문명 접촉 가능성을 연구한다. 유성원은 WRI 국제 본부에서 연구원으로 근무한 뒤 WRI 한국 본부장으로 부임한다.\n\n## 2. 관련 문서\n- [[웜홀 기술]]\n- [[퍼스트 컨택트 프로젝트]]\n- [[유성원]]`},
+{title:"웜홀 기술",cat:"기술",date:"2026-11-07",body:`웜홀 기술은 서로 다른 시공간 영역을 연결하는 통로를 인공적으로 형성하고 제어하는 기술이다.\n\n## 1. 인공 웜홀\n인류는 웜홀을 인공적으로 생성하는 기술을 확보했으며, 이를 이용한 장거리 이동을 연구한다.\n\n## 2. 워프 드라이브\n워프 드라이브는 우주선이 목적지까지 이어지는 임시 웜홀을 생성한 뒤 그 통로를 통과하는 방식의 이동 기술이다.\n\n## 3. 관련 문서\n- [[위상 물질]]\n- [[대공]]`},
+{title:"하말리우스",cat:"천체·문명",date:"2026-11-07",body:`하말리우스는 인류가 퍼스트 컨택트 프로젝트를 통해 접촉을 시도한 외계 문명권이다. 하말리우스의 자기장과 방사선 흐름은 2041년 발생한 대공을 통해 지구에 유입되며 대규모 재난의 원인이 된다.\n\n## 1. 관련 문서\n- [[퍼스트 컨택트 프로젝트]]\n- [[대파멸]]\n- [[대공]]`},
+{title:"위상 물질",cat:"기술",date:"2026-11-07",body:`위상 물질은 웜홀의 형성과 안정화에 관여하는 물질이다. 퍼스트 컨택트 프로젝트의 진행 과정에서 위상 물질의 투입과 관련된 미세한 오차가 발생하고, 이것이 웜홀의 불안정으로 이어진다.\n\n※ 구체적인 물성·투입 절차·오차의 성격은 설정 원문 확인 후 보완할 것.\n\n## 관련 문서\n- [[웜홀 기술]]\n- [[퍼스트 컨택트 프로젝트]]`},
+{title:"퍼스트 컨택트 프로젝트",cat:"사건·계획",date:"2026-11-07",body:`퍼스트 컨택트 프로젝트는 인류가 하말리우스와 접촉하기 위해 추진한 계획이다. 2041년 4월 12일 16시경 프로젝트 진행 중 웜홀이 통제 불능 상태에 빠지면서 대공이 형성되고, 대파멸이 시작된다.\n\n## 1. 진행과 결과\n프로젝트 도중 발생한 위상 물질 관련 미세 오차가 웜홀 불안정을 일으킨다. 이 사건은 사전에 예측하거나 단일 인물이 통제할 수 있었던 사고로 단정할 수 없다.\n\n## 2. 관련 문서\n- [[위상 물질]]\n- [[대공]]\n- [[대파멸]]`},
+{title:"대파멸",cat:"사건",date:"2026-11-07",body:`대파멸은 2041년 4월 12일 발생한 대규모 재난이다. 퍼스트 컨택트 프로젝트 도중 통제 불능의 웜홀인 대공이 형성되면서 하말리우스의 자기장과 방사선 흐름이 지구로 유입되었다.\n\n## 1. 발생\n2041년 4월 12일 16시경, 퍼스트 컨택트 프로젝트의 진행 중 웜홀이 불안정해지며 대공이 형성된다.\n\n## 2. 피해\n대파멸로 지구 생명체의 약 3분의 1이 사망한다. 북반구와 남반구의 거주 불능 지역 및 피해 양상은 별도 설정 원문에 맞춰 상세화할 필요가 있다.\n\n## 3. 이후\n대공의 영향은 약 8개월에서 1년 간격으로 반복되어 추가 재난을 일으킨다. WRI를 비롯한 연구진은 피해를 억제할 방법을 모색하고, 2042년 하말리우스 원정과 2044년 17개 파편의 도착을 거쳐 대공을 영구적으로 폐쇄할 방법을 확보한다.\n\n## 4. 종결\n2046년 유성원이 구성한 팀이 대공 폐쇄 작전을 수행해 대공을 닫는 데 성공한다. 재난의 종결이 사망자나 파괴된 환경의 회복을 뜻하지는 않는다.\n\n## 관련 문서\n- [[퍼스트 컨택트 프로젝트]]\n- [[대공]]\n- [[대공 폐쇄 작전]]\n- [[유성원]]\n- [[최하라]]`},
+{title:"대공",cat:"현상",date:"2026-11-07",body:`대공은 2041년 4월 12일 퍼스트 컨택트 프로젝트 도중 발생한 통제 불능의 거대 웜홀이다. 하말리우스의 자기장과 방사선 흐름이 지구로 유입되는 통로가 된다.\n\n## 1. 영향\n대공의 영향은 일회성으로 끝나지 않고 약 8개월에서 1년 간격으로 반복된다. 이에 따라 대파멸 이후에도 추가적인 피해가 발생한다.\n\n## 2. 폐쇄\n2044년 지구에 도착한 17개 파편을 통해 대공을 영구 폐쇄할 방법이 확보된다. 실제 폐쇄는 2046년에 이루어진다.\n\n## 관련 문서\n- [[대파멸]]\n- [[하말리우스]]\n- [[대공 폐쇄 작전]]`},
+{title:"대공 폐쇄 작전",cat:"사건·작전",date:"2026-11-07",body:`대공 폐쇄 작전은 대파멸의 근본 원인인 대공을 영구적으로 닫기 위해 2046년 수행된 작전이다.\n\n## 1. 작전의 배경\n2042년 하말리우스 원정을 통해 대공 폐쇄에 필요한 기술적 단서가 발견되고, 2044년 17개 파편이 지구에 도착하면서 폐쇄 방법이 구체화된다. 그러나 고위 우주기관 관계자들의 지연으로 실행이 늦어지자 유성원은 직접 팀을 구성한다.\n\n## 2. 결과\n2046년 작전은 성공한다. 대공은 폐쇄되지만 대파멸로 인한 인명 피해와 환경적 손실은 남는다.\n\n## 관련 문서\n- [[대공]]\n- [[대파멸]]\n- [[유성원]]`},
+{title:"유성원",cat:"등장인물",date:"2026-11-07",body:`유성원은 WRI의 웜홀 연구자이며, 이후 WRI 한국 본부장을 맡는다.\n\n## 1. 기본 정보\n- 출생: 2008년\n- 성별: 남성\n- 신장: 178cm\n- 성격 유형: INTJ\n- 전공·연구 분야: 천체물리학 및 웜홀 이론\n\n## 2. 이력\n의사인 부모와 학자인 부모 아래에서 성장한 둘째 아들이다. 조기 진학과 영재 교육 과정을 거쳐 스탠퍼드와 프린스턴에서 천체물리학 및 웜홀 이론을 연구했다. WRI 국제 본부 연구원을 거쳐 WRI 한국 본부장이 된다.\n\n## 3. 성격\n논리와 효율, 판단을 중시하며 완벽주의적이고 일에 몰두하는 성향이다. 불필요한 대화나 관계를 선호하지 않지만 소중하게 여기는 사람에게는 세심하다.\n\n## 4. 대파멸\n2041년 대파멸 이후 반복되는 재난을 억제하기 위한 실질적인 대응책을 마련한다. 2046년에는 대공 폐쇄를 위해 직접 팀을 구성하고 작전을 이끈다.\n\n## 5. 관계\n[[최하라]]와는 과학 자문을 계기로 만나 연인이 된다. 대파멸 직전 두 사람은 잠시 시간을 갖기로 했으나, 재난으로 인해 다시 만나 대화할 기회를 잃는다.\n\n## 관련 문서\n- [[WRI]]\n- [[대파멸]]\n- [[최하라]]`},
+{title:"최하라",cat:"등장인물",date:"2026-11-07",body:`최하라는 SF 로맨스 소설가다. 과학적 설정에 관한 자문을 받기 위해 유성원과 정기적으로 만나면서 그와 가까워진다.\n\n## 1. 기본 정보\n- 출생: 2007년\n- 성별: 여성\n- 직업: SF 로맨스 소설가\n- 성격 유형: ENFP\n\n## 2. 인물 및 활동\n밝고 자유로운 사고방식을 지녔으며, SF 로맨스 분야에서 작가로 활동한다. 유성원과의 관계와 별개로 자신의 창작 활동과 직업적 삶을 이어간다.\n\n## 3. 유성원과의 관계\n유성원보다 한 살 많다. 두 사람은 과학 자문을 계기로 만나 연인이 된다. 2041년 대파멸 직전 잠시 시간을 갖기로 했으나, 대파멸이 발생하면서 미처 마무리하지 못한 대화가 남는다.\n\n## 관련 문서\n- [[유성원]]\n- [[대파멸]]`},
+{title:"백영",cat:"등장인물",date:"2026-11-07",body:`백영은 WRI 조직 내에서 유성원의 지휘 아래에 있는 인물이다. 퍼스트 컨택트 프로젝트의 위상 물질 투입 과정과 관련된 설정이 존재한다.\n\n※ 개인의 고의나 단독 책임으로 사건을 설명하지 않도록 주의한다. 구체적인 직책과 인물 이력은 설정 원문 확인 후 보완할 것.\n\n## 관련 문서\n- [[WRI]]\n- [[퍼스트 컨택트 프로젝트]]\n- [[대파멸]]`}
+];
+const KEY='wri_archive_v1';
+let db=loadDB(), current='대문', tab='문서';
+function loadDB(){return {docs:seed.map(d=>({...d})),history:[],talk:{}}}
+function save(){}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function slug(s){return encodeURIComponent(s)}
+function getDoc(t){return db.docs.find(d=>d.title===t)}
+function goHome(){current='대문';tab='문서';render()}
+function openDoc(t){current=t;tab='문서';history.replaceState(null,'','#'+encodeURIComponent(t));render()}
+function searchDoc(e){e.preventDefault();let q=document.getElementById('searchInput').value.trim();let found=db.docs.find(d=>d.title.toLowerCase()===q.toLowerCase())||db.docs.find(d=>d.title.toLowerCase().includes(q.toLowerCase()));if(found)openDoc(found.title);else{current='검색 결과';renderSearch(q)}}
+function render(){if(current==='대문'){renderHome();return}if(current==='검색 결과')return;let d=getDoc(current);if(!d){renderMissing(current);return}let app=document.getElementById('app');app.innerHTML=`<h1>${esc(d.title)}</h1><div class="subtitle">최근 수정: ${esc(d.date||'기록 없음')} · 분류: <span class="tag">${esc(d.cat||'미분류')}</span></div><div class="tabs">${['문서','역사'].map(t=>`<button class="${tab===t?'active':''}" onclick="tab='${t}';render()">${t}</button>`).join('')}</div>${tab==='문서'?renderBody(d):renderHistory(d)}`}
+function renderBody(d){let body=markup(d.body||'');let headings=[...String(d.body||'').matchAll(/^##\s+(.+)$/gm)].map(x=>x[1]);let toc=headings.length?`<div class="toc"><div class="toc-title">목차</div><ol>${headings.map((h,i)=>`<li><a href="#sec${i}">${esc(h)}</a></li>`).join('')}</ol></div>`:'';let i=0;body=body.replace(/<h2>/g,()=>`<h2 id="sec${i++}">`);return `<div class="toolbar"><button class="btn" onclick="copyLink('${esc(d.title)}')">문서 링크 복사</button><button class="btn" onclick="showSpecial('backlinks','${esc(d.title)}')">역링크</button></div>${toc}<div>${body}</div><div class="footnotes"><b>분류</b><p><span class="tag">${esc(d.cat||'미분류')}</span></p></div>`}
+function markup(src){let notes=[];let s=esc(src).replace(/\[\[(.*?)\]\]/g,(_,x)=>`<a href="#" onclick="openDoc('${x.replace(/'/g,"\\'")}');return false">${x}</a>`).replace(/\[\^(.+?)\]/g,(_,x)=>{notes.push(x);return `<sup class="ref"><a href="#fn${notes.length}">[${notes.length}]</a></sup>`}).replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^- (.+)$/gm,'<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`).replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>');let out='<p>'+s+'</p>';if(notes.length)out+=`<div class="footnotes"><b>각주</b><ol>${notes.map((n,i)=>`<li id="fn${i+1}">${esc(n)} <a href="#">↩</a></li>`).join('')}</ol></div>`;return out}
+function renderHome(){let app=document.getElementById('app');app.innerHTML=`<h1>WRI ARCHIVE</h1><div class="subtitle">World Research Institute · 개인 세계관 백과사전</div><div class="notice"><b>이 문서는 개인 창작 세계관의 설정을 정리하는 위키입니다.</b><br>문서 내용은 현재까지 공유된 설정을 바탕으로 한 초안이며, 원문 자료와 대조해 확정할 수 있도록 보완이 필요한 항목을 표시합니다.</div><h2>세계관 개요</h2><p>WRI와 웜홀 기술, 하말리우스 접촉 계획, 2041년 대파멸 및 2046년 대공 폐쇄에 관한 통합 문서 아카이브.</p><div class="infobox"><h3>WRI ARCHIVE</h3><table><tr><td>문서 수</td><td>${db.docs.length}</td></tr><tr><td>분류</td><td>세계관 / 인물 / 사건 / 기술</td></tr><tr><td>기준 시점</td><td>2041–2046</td></tr></table></div><h2>주요 문서</h2><ul>${['WRI','웜홀 기술','하말리우스','퍼스트 컨택트 프로젝트','대파멸','대공','대공 폐쇄 작전','유성원','최하라','백영'].map(t=>`<li><a href="#" onclick="openDoc('${t}');return false">${t}</a></li>`).join('')}</ul><h2>문서 작성 안내</h2><p>문서 제목을 검색하거나 왼쪽 분류 메뉴에서 선택할 수 있습니다. 이 사이트는 공개 열람 전용이며, 문서 수정 권한은 사이트 관리자에게만 있습니다.</p><div class="toolbar"><button class="btn" onclick="showSpecial('all')">전체 문서 보기</button></div>`}
+function renderMissing(t){document.getElementById('app').innerHTML=`<h1>${esc(t)}</h1><div class="notice">아직 등록되지 않은 문서입니다.</div><a onclick="goHome()">대문으로 돌아가기</a>`}
+function renderSearch(q){let hits=db.docs.filter(d=>(d.title+' '+d.body).toLowerCase().includes(q.toLowerCase()));document.getElementById('app').innerHTML=`<h1>검색 결과</h1><p>‘${esc(q)}’ 검색 결과 ${hits.length}건</p><ul>${hits.map(d=>`<li><a onclick="openDoc('${esc(d.title)}')">${esc(d.title)}</a> <span class="muted">— ${esc(d.cat)}</span></li>`).join('')}</ul>`;current='검색 결과'}
+function showSpecial(kind,arg){current='특수 문서';let app=document.getElementById('app');if(kind==='all'||kind==='categories'){let items=kind==='all'?db.docs: [...new Set(db.docs.map(d=>d.cat||'미분류'))].map(c=>({title:c,cat:'분류',body:''}));app.innerHTML=`<h1>${kind==='all'?'전체 문서':'분류 목록'}</h1><table class="listtable"><tr><th>문서</th><th>분류</th><th>최근 수정</th></tr>${items.map(d=>`<tr><td><a onclick="openDoc('${esc(d.title)}')">${esc(d.title)}</a></td><td>${esc(d.cat)}</td><td>${esc(d.date||'')}</td></tr>`).join('')}</table>`}else if(kind==='recent'){let h=[...db.history].reverse().slice(0,50);app.innerHTML=`<h1>최근 변경</h1><table class="listtable"><tr><th>문서</th><th>변경 시각</th><th>요약</th></tr>${h.map(x=>`<tr><td><a onclick="openDoc('${esc(x.title)}')">${esc(x.title)}</a></td><td>${esc(x.time)}</td><td>${esc(x.summary)}</td></tr>`).join('')}</table>`}else if(kind==='backlinks'){let hits=db.docs.filter(d=>d.title!==arg&&(d.body||'').includes('[['+arg+']]'));app.innerHTML=`<h1>${esc(arg)}의 역링크</h1><ul>${hits.map(d=>`<li><a onclick="openDoc('${esc(d.title)}')">${esc(d.title)}</a></li>`).join('')}</ul>`}}
+function renderTalk(d){let arr=db.talk[d.title]||[];return `<h2>토론</h2><p class="muted">문서 내용에 관한 의견과 수정 제안을 기록합니다. 토론 내용은 이 브라우저에 저장됩니다.</p><div class="formline"><textarea id="talkText" placeholder="토론 내용을 입력하세요." style="width:100%;height:90px;padding:9px"></textarea><button class="btn primary" onclick="addTalk('${esc(d.title)}')">의견 등록</button></div>${arr.map(x=>`<div class="notice"><b>${esc(x.time)}</b><p>${esc(x.text)}</p></div>`).join('')}`}
+function renderHistory(d){let h=db.history.filter(x=>x.title===d.title).reverse();return `<h2>문서 역사</h2><table class="listtable"><tr><th>시각</th><th>변경</th><th>복원</th></tr>${h.map((x,i)=>`<tr><td>${esc(x.time)}</td><td>${esc(x.summary)}</td><td>${x.snapshot?`<button class="btn" onclick="restoreVersion('${esc(d.title)}',${db.history.indexOf(x)})">복원</button>`:'—'}</td></tr>`).join('')}</table>`}
+function restoreVersion(title,i){let x=db.history[i];if(!x||!x.snapshot)return;let old=JSON.parse(x.snapshot),idx=db.docs.findIndex(d=>d.title===title);db.history.push({title,time:new Date().toLocaleString('ko-KR'),summary:'이전 버전 복원',snapshot:JSON.stringify(db.docs[idx])});db.docs[idx]=old;save();openDoc(title)}
+function copyLink(title){navigator.clipboard?.writeText(location.href.split('#')[0]+'#'+slug(title));alert('문서 제목을 복사하거나 주소를 공유할 수 있습니다.')}
+if(location.hash){const initial=decodeURIComponent(location.hash.slice(1));if(initial)current=initial;}
+render();
+</script>
+</body></html>
